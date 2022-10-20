@@ -61,6 +61,29 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		E459D5FD2901889800926789 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E459D5FE290188A600926789 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E459D5FE290188A600926789 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		E459D5FF290188B400926789 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E48A97D428FF300A003398C1 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E48A97BD28FF3009003398C1 = {
 			isa = PBXGroup;
 			children = (
@@ -81,8 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				E459D5FA2901875C00926789 /* Application */,
+				E459D5FF290188B400926789 /* Views */,
 				E459D5FB2901877100926789 /* Controllers */,
-				E48A97D428FF300A003398C1 /* LaunchScreen.storyboard */,
+				E459D5FD2901889800926789 /* Extensions */,
 				E459D5FC2901878000926789 /* Resources */,
 			);
 			path = RouteTestTask;
