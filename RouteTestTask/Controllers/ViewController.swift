@@ -58,7 +58,9 @@ class ViewController: UIViewController {
     }
     
     @objc func addAddressButtonTapped() {
-        alertError(title: "Error occured", message: "The server is unavailable")
+        alertAddAddress(title: "Add", placeholder: "Enter address") { (text) in
+            print(text)
+        }
     }
     
     @objc func routeButtonTapped() {
