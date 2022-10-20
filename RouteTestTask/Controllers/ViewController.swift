@@ -29,6 +29,16 @@ class ViewController: UIViewController {
        let button = UIButton()
         button.setImage(UIImage(named: "Route"), for: .normal)
         button.addTarget(self, action: #selector(routeButtonTapped), for: .touchUpInside)
+        button.isHidden = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var resetButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "Reset"), for: .normal)
+        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -44,6 +54,7 @@ class ViewController: UIViewController {
         view.addSubview(mapView)
         view.addSubview(addAddressButton)
         view.addSubview(routeButton)
+        view.addSubview(resetButton)
     }
     
     @objc func addAddressButtonTapped() {
@@ -52,6 +63,10 @@ class ViewController: UIViewController {
     
     @objc func routeButtonTapped() {
         print("routeButtonTapped")
+    }
+    
+    @objc func resetButtonTapped() {
+        print("resetButtonTapped")
     }
 
 }
@@ -74,7 +89,10 @@ extension ViewController {
             routeButton.widthAnchor.constraint(equalToConstant: 100),
             routeButton.heightAnchor.constraint(equalToConstant: 50),
             
-            
+            resetButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -20),
+            resetButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -30),
+            resetButton.widthAnchor.constraint(equalToConstant: 100),
+            resetButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
