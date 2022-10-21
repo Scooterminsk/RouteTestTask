@@ -103,6 +103,20 @@ class ViewController: UIViewController {
         }
     }
     
+    private func createDirectionRequest(startCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+        
+        let startLocation = MKPlacemark(coordinate: startCoordinate)
+        let destinationLocation = MKPlacemark(coordinate: destinationCoordinate)
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: startLocation)
+        request.destination = MKMapItem(placemark: destinationLocation)
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        
+        getShortestDirection(directionRequest: request)
+    }
+    
     private func getShortestDirection(directionRequest: MKDirections.Request) {
         let direction = MKDirections(request: directionRequest)
         direction.calculate { [weak self] (response, error) in
