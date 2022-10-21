@@ -71,7 +71,10 @@ class ViewController: UIViewController {
     }
     
     @objc func routeButtonTapped() {
-        print("routeButtonTapped")
+        for index in 0...annotationsArray.count - 2 {
+            createDirectionRequest(startCoordinate: annotationsArray[index].coordinate, destinationCoordinate: annotationsArray[index + 1].coordinate)
+        }
+        mapView.showAnnotations(annotationsArray, animated: true)
     }
     
     @objc func resetButtonTapped() {
@@ -148,7 +151,7 @@ class ViewController: UIViewController {
 //MARK: - MKMapViewDelegate
 extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let overlay = overlay as? MKPolyline else { return MKCircleRenderer() }
+        guard let overlay = overlay as? MKPolyline else { return MKOverlayRenderer() }
         let renderer = MKPolygonRenderer(overlay: overlay)
         renderer.strokeColor = #colorLiteral(red: 0.5341260433, green: 0.5569477677, blue: 1, alpha: 1)
         return renderer
