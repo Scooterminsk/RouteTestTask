@@ -102,6 +102,27 @@ class ViewController: UIViewController {
             self?.mapView.showAnnotations(self!.annotationsArray, animated: true)
         }
     }
+    
+    private func getShortestDirection(directionRequest: MKDirections.Request) {
+        let direction = MKDirections(request: directionRequest)
+        direction.calculate { [weak self] (response, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let response = response else {
+                self?.alertError(title: "Ошибка", message: "Маршрут недоступен")
+                return
+            }
+            
+            var minRoute = response.routes.sorted{ $0.distance < $1.distance }.first
+            if let overlay = minRoute?.polyline as? MKOverlay {
+                self?.mapView.addOverlay(overlay)
+            }
+        }
+    }
 
 }
 
