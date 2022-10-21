@@ -80,6 +80,7 @@ class ViewController: UIViewController {
             
             if let error = error {
                 print(error.localizedDescription)
+                self?.alertError(title: "Ошибка", message: "Сервер недоступен. Попробуйте добавить адрес еще раз")
                 return
             }
             
