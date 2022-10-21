@@ -49,6 +49,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        setupDelegates()
         setConstraints()
     }
 
@@ -57,6 +58,10 @@ class ViewController: UIViewController {
         view.addSubview(addAddressButton)
         view.addSubview(routeButton)
         view.addSubview(resetButton)
+    }
+    
+    private func setupDelegates() {
+        mapView.delegate = self
     }
     
     @objc func addAddressButtonTapped() {
@@ -140,6 +145,17 @@ class ViewController: UIViewController {
 
 }
 
+//MARK: - MKMapViewDelegate
+extension ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let overlay = overlay as? MKPolyline else { return MKCircleRenderer() }
+        let renderer = MKPolygonRenderer(overlay: overlay)
+        renderer.strokeColor = #colorLiteral(red: 0.5341260433, green: 0.5569477677, blue: 1, alpha: 1)
+        return renderer
+    }
+}
+
+//MARK: - SetConstraints
 extension ViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
