@@ -139,7 +139,7 @@ class ViewController: UIViewController {
                 return
             }
             
-            var minRoute = response.routes.sorted{ $0.distance < $1.distance }.first
+            let minRoute = response.routes.sorted{ $0.distance < $1.distance }.first
             if let overlay = minRoute?.polyline as? MKOverlay {
                 self?.mapView.addOverlay(overlay)
             }
@@ -152,7 +152,7 @@ class ViewController: UIViewController {
 extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let overlay = overlay as? MKPolyline else { return MKOverlayRenderer() }
-        let renderer = MKPolygonRenderer(overlay: overlay)
+        let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = #colorLiteral(red: 0.5341260433, green: 0.5569477677, blue: 1, alpha: 1)
         return renderer
     }
