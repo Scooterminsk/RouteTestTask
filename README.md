@@ -1,2 +1,2 @@
 # RouteTestTask
-Приложение для построения кратчайшего маршрута по заданным точкам.
+Application for building the shortest route for given points.
